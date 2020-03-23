@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="styles.css">
+<head>
+<style>
+h1 {
+        color: orange;
+        text-align: center;
+        display: flex;
+        border: solid;
+        margin-left: 10px;
+}
+body {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mystyle {
+  width: 400px;
+  height: 100px;
+  background-color: green;
+  text-align: center;
+  font-size: 25px;
+  color: navy;
+  margin-bottom: 10px;
+}
+.btn {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  align-content: center;
+}
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+.newClassName {
+  width: 400px;
+  height: 100px;
+  background-color: red;
+  text-align: center;
+  font-size: 25px;
+  color: navy;
+  margin-bottom: 10px;
+}
+.free {
+        background-color: green;
+}
+</style>
+</head>
+<body id="free" class="mystyle" onload="startTime()">
+<?php
+$page = $_SERVER['PHP_SELF'];
+$sec = "300";
+header("Refresh: $sec; url=$page")
+?>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + 1 + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+function myFunction() {
+  document.getElementById("free").classList.toggle("ver");
+
+}
+function displayPhrase(){
+  var x = document.getElementById("demo");
+  if (x.innerHTML === "vergadering/les") {
+    x.innerHTML = "Beschikbaar";
+  } else {
+    x.innerHTML = "vergadering/les";
+  }
+}
+</script>
+<div>
+  <h1 id="demo">Beschikbaar</h1>
+  <div>
+    <button class="btn" onclick="myFunction(); displayPhrase()">Change Status</button>
+  </div>
+  <div id="txt"></div>
+
+</body>
+</html>
