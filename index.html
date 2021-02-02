@@ -59,6 +59,9 @@ body {
 .free {
         background-color: green;
 }
+.busy {
+        background-color: red;
+}
 </style>
 </head>
 <body id="free" class="mystyle" onload="startTime()">
@@ -84,15 +87,17 @@ function checkTime(i) {
   return i;
 }
 function myFunction() {
-  document.getElementById("free").classList.toggle("ver");
+  document.getElementById("free").classList.toggle("busy");
 
 }
 function displayPhrase(){
   var x = document.getElementById("demo");
   if (x.innerHTML === "vergadering/les") {
     x.innerHTML = "Beschikbaar";
+    
   } else {
     x.innerHTML = "vergadering/les";
+    
   }
 }
 </script>
